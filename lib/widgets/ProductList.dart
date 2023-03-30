@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 
 import "../models/Product.dart";
+import "ProductListItem.dart";
 
 class ProductList extends StatelessWidget {
   final List<Product> products;
@@ -15,11 +16,11 @@ class ProductList extends StatelessWidget {
     // );
 
     return ListView.builder(
-      itemCount: products.length,
-      itemBuilder: (context, index){
-        final product = products[index];
-      return Text(product.name);
-    });
+        itemCount: products.length,
+        itemBuilder: (context, index) {
+          final product = products[index];
+          return ProductListItem(product: product);
+        });
   }
 }
 
