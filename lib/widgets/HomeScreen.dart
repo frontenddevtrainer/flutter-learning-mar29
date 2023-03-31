@@ -1,4 +1,5 @@
 import 'package:edu_ecommerce/models/Product.dart';
+import 'package:edu_ecommerce/widgets/EduAppDrawer.dart';
 import 'package:flutter/material.dart';
 
 import 'EduAppBar.dart';
@@ -19,28 +20,7 @@ class HomeScreen extends StatelessWidget {
       body: ProductList(
         products: products,
       ),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(color: Colors.amber),
-              child: Text("hello world!!!"),
-            ),
-            ListTile(
-              title: const Text("Products"),
-              onTap: () {},
-            ),
-            ListTile(
-              title: const Text("Cart"),
-              onTap: () { Navigator.pushNamed(context, "/cart"); },
-            ),
-            ListTile(
-              title: const Text("Setting"),
-              onTap: () {},
-            )
-          ],
-        ),
-      ),
+      drawer: EduAppDrawer()
 
       // Example: Container
       // body: Container(

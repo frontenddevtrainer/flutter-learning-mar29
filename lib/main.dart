@@ -1,3 +1,4 @@
+import "package:edu_ecommerce/routes.dart";
 import "package:flutter/material.dart";
 import "./widgets/HomeScreen.dart";
 import "./widgets/CartScreen.dart";
@@ -15,11 +16,6 @@ class Application extends StatelessWidget {
         // gets replaced with router in later session. this is the default screen to load.
         // home: HomeScreen()
         initialRoute: "/",
-        routes: {
-          "/" :(context) => HomeScreen(),
-          "/cart" :(context) => CartScreen(),
-        }
-    );
-
+        routes: routes);
   }
 }
