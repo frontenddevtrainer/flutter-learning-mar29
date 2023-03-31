@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'ProductList.dart';
 
 class HomeScreen extends StatelessWidget {
-  
   final List<Product> products = [
     Product(name: "Laptop", price: 100000.00),
     Product(name: "iPhone", price: 70000.00),
@@ -24,10 +23,40 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {}, icon: const Icon(Icons.shopping_bag_sharp)),
           IconButton(onPressed: () {}, icon: const Icon(Icons.person))
         ],
-        leading: const Icon(Icons.menu),
+        leading: Builder(
+          builder: (context) {
+            return IconButton(
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                icon: const Icon(Icons.menu));
+          },
+        ),
       ),
       body: ProductList(
         products: products,
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(color: Colors.amber),
+              child: Text("hello world!!!"),
+            ),
+            ListTile(
+              title: const Text("Products"),
+              onTap: () {},
+            ),
+            ListTile(
+              title: const Text("Cart"),
+              onTap: () {},
+            ),
+            ListTile(
+              title: const Text("Setting"),
+              onTap: () {},
+            )
+          ],
+        ),
       ),
 
       // Example: Container
