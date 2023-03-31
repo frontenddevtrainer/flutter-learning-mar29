@@ -1,6 +1,7 @@
 import 'package:edu_ecommerce/models/Product.dart';
 import 'package:flutter/material.dart';
 
+import 'EduAppBar.dart';
 import 'ProductList.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -14,25 +15,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Edureka Ecommerce"),
-        backgroundColor: Colors.deepPurple,
-        // centerTitle: true,
-        actions: [
-          IconButton(
-              onPressed: () {}, icon: const Icon(Icons.shopping_bag_sharp)),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.person))
-        ],
-        leading: Builder(
-          builder: (context) {
-            return IconButton(
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-                icon: const Icon(Icons.menu));
-          },
-        ),
-      ),
+      appBar: const EduAppBar(title: "Homepage"),
       body: ProductList(
         products: products,
       ),
@@ -49,7 +32,7 @@ class HomeScreen extends StatelessWidget {
             ),
             ListTile(
               title: const Text("Cart"),
-              onTap: () {},
+              onTap: () { Navigator.pushNamed(context, "/cart"); },
             ),
             ListTile(
               title: const Text("Setting"),

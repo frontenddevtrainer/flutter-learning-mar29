@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "./widgets/HomeScreen.dart";
+import "./widgets/CartScreen.dart";
 
 void main() {
   runApp(Application());
@@ -12,6 +13,13 @@ class Application extends StatelessWidget {
         title: "Edureka Ecommerce",
         theme: ThemeData(primarySwatch: Colors.deepOrange),
         // gets replaced with router in later session. this is the default screen to load.
-        home: HomeScreen());
+        // home: HomeScreen()
+        initialRoute: "/",
+        routes: {
+          "/" :(context) => HomeScreen(),
+          "/cart" :(context) => CartScreen(),
+        }
+    );
+
   }
 }
