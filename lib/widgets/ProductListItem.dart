@@ -22,6 +22,23 @@ class _ProductListItemState extends State<ProductListItem> {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> stackChildren = [
+      ElevatedButton(
+          onPressed: _increaseQuantity, child: const Text("Select Quantity")),
+    ];
+
+    if (counter > 0) {
+      stackChildren.add(Positioned(
+          right: 0,
+          child: Container(
+            padding: const EdgeInsets.all(5),
+            decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 255, 34, 255),
+                borderRadius: BorderRadius.all(Radius.circular(5))),
+            child: Text(counter.toString()),
+          )));
+    }
+
     return Card(
       child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,26 +61,8 @@ class _ProductListItemState extends State<ProductListItem> {
                           fontWeight: FontWeight.bold, fontSize: 24),
                     ),
                     Text(widget.product.price.toStringAsFixed(2)),
-                    // Text("Selected quantity: $counter"),
-                    // ElevatedButton(
-                    //     onPressed: _increaseQuantity,
-                    //     child: const Text("Buy now")),
                     Stack(
-                      children: [
-                        ElevatedButton(
-                            onPressed: _increaseQuantity,
-                            child: const Text("Select Quantity")),
-                        Positioned(
-                          right: 0,
-                            child: Container(
-                          padding: const EdgeInsets.all(5),
-                          decoration: const BoxDecoration(
-                              color: Color.fromARGB(255, 255, 34, 255),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5))),
-                          child: Text(counter.toString()),
-                        ))
-                      ],
+                      children: stackChildren,
                     )
                   ]),
             ),
