@@ -11,8 +11,10 @@ void main() {
 class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<EmployeeVM>(
-      create: (_) => EmployeeVM(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<EmployeeVM>(create: (_) => EmployeeVM())
+      ],
       child: MaterialApp(
           title: "Edureka Ecommerce",
           theme: ThemeData(primarySwatch: Colors.deepOrange),
