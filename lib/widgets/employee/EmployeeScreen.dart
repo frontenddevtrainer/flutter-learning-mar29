@@ -13,7 +13,7 @@ class EmployeeScreen extends StatelessWidget {
     return Consumer<EmployeeVM>(builder: (context, value, child) {
       return Scaffold(
           appBar: const EduAppBar(title: "Homepage"),
-          body: Text('This is user ${value.name}'));
+          body: Text('This is user ${value.name != "" ? value.name : ""}'));
     });
   }
 }

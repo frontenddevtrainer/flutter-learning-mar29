@@ -3,11 +3,10 @@ import 'package:edu_ecommerce/services/employee.dart';
 import 'package:flutter/material.dart';
 
 class EmployeeVM with ChangeNotifier{
-  Employee employee;
+  
+  late Employee employee;
+  
   final EmployeeService employeeService = EmployeeService();
-
-  EmployeeVM({ required this.employee });
-
 
   String get name => employee.name;
 
