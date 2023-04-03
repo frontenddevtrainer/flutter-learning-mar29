@@ -1,8 +1,10 @@
 import 'package:edu_ecommerce/models/Employee.dart';
+import 'package:edu_ecommerce/services/employee.dart';
 import 'package:flutter/material.dart';
 
 class EmployeeVM with ChangeNotifier{
   Employee employee;
+  final EmployeeService employeeService = EmployeeService();
 
   EmployeeVM({ required this.employee });
 
@@ -16,5 +18,10 @@ class EmployeeVM with ChangeNotifier{
   String get dept => employee.dept;
 
   String get phone => employee.phone;
+
+  Future<void> getEmployee() async {
+    employee = await employeeService.getEmployee();
+    notifyListeners();
+  }
 
 }
