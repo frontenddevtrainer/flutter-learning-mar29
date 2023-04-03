@@ -1,6 +1,7 @@
 import 'package:edu_ecommerce/models/Employee.dart';
+import 'package:flutter/material.dart';
 
-class EmployeeVM {
+class EmployeeVM with ChangeNotifier{
   Employee employee;
 
   EmployeeVM({ required this.employee });

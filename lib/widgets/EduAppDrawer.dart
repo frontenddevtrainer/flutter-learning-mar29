@@ -22,6 +22,10 @@ class EduAppDrawer extends StatelessWidget {
             ListTile(
               title: const Text("Setting"),
               onTap: () { Navigator.pushNamed(context, "/settings"); },
+            ),
+            ListTile(
+              title: const Text("Employee"),
+              onTap: () { Navigator.pushNamed(context, "/employee"); },
             )
           ],
         ),
