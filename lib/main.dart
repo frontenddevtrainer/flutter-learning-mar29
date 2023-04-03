@@ -11,7 +11,7 @@ void main() {
 class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
+    return ChangeNotifierProvider<EmployeeVM>(
       create: (_) => EmployeeVM(
           employee: Employee(
               name: "abc",
