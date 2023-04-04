@@ -11,7 +11,10 @@ class CheckoutScreen extends StatefulWidget {
 }
 
 class _CheckoutScreen extends State<CheckoutScreen> {
+  final formKey = GlobalKey<FormState>();
+
   final usernameController = TextEditingController();
+  final emailController = TextEditingController();
 
   // Username
   // Email,
@@ -25,20 +28,38 @@ class _CheckoutScreen extends State<CheckoutScreen> {
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: Form(
+            key: formKey,
             child: Column(
-          children: [
-            TextFormField(
-              controller: usernameController,
-              decoration: const InputDecoration(labelText: "Username"),
-              // validator: (value) {
-              //   if (value. && value?.isEmpty) {
-              //     return "Username is required.";
-              //   }
-              //   return null;
-              // },
-            )
-          ],
-        )),
+              children: [
+                TextFormField(
+                  controller: usernameController,
+                  decoration: const InputDecoration(labelText: "Username"),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Username is required.";
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  controller: emailController,
+                  decoration: const InputDecoration(labelText: "Email"),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Email is required.";
+                    }
+                    return null;
+                  },
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      if (formKey.currentState!.validate()) {
+                        print("submitted");
+                      }
+                    },
+                    child: const Text("Submit"))
+              ],
+            )),
       ),
     );
   }
