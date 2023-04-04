@@ -1,5 +1,6 @@
 import "package:edu_ecommerce/models/Employee.dart";
 import "package:edu_ecommerce/routes.dart";
+import "package:edu_ecommerce/viewmodels/Cart.dart";
 import "package:edu_ecommerce/viewmodels/Employee.dart";
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
@@ -13,7 +14,8 @@ class Application extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<EmployeeVM>(create: (_) => EmployeeVM())
+        ChangeNotifierProvider<EmployeeVM>(create: (_) => EmployeeVM()),
+        ChangeNotifierProvider<CartVM>(create: (_) => CartVM())
       ],
       child: MaterialApp(
           title: "Edureka Ecommerce",

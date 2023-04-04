@@ -11,6 +11,8 @@ class EmployeeVM with ChangeNotifier{
   
   final EmployeeService employeeService = EmployeeService();
 
+  int items = 0;
+
   String get name => employee.name;
 
   String get id => employee.id;
@@ -27,6 +29,11 @@ class EmployeeVM with ChangeNotifier{
 
     employee = await employeeService.getEmployee();
     isLoading = false;
+    notifyListeners();
+  }
+
+  counter(){
+    items++;
     notifyListeners();
   }
 

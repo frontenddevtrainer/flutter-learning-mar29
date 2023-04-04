@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
+import "package:provider/provider.dart";
 
 import "../models/Product.dart";
+import "../viewmodels/Cart.dart";
 
 class ProductListItem extends StatefulWidget {
   final Product product;
@@ -18,6 +20,9 @@ class _ProductListItemState extends State<ProductListItem> {
     setState(() {
       counter++;
     });
+
+    Provider.of<CartVM>(context, listen: false).addToCart(
+        id: widget.product.id, name: widget.product.name, quantity: counter);
   }
 
   @override
@@ -39,34 +44,36 @@ class _ProductListItemState extends State<ProductListItem> {
           )));
     }
 
-    return Card(
-      child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-              height: 150,
-              width: 150,
-              color: Colors.amber,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.product.name,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 24),
-                    ),
-                    Text(widget.product.price.toStringAsFixed(2)),
-                    Stack(
-                      children: stackChildren,
-                    )
-                  ]),
-            ),
-          ]),
-    );
+    return Card(child: Consumer<CartVM>(
+      builder: (context, value, child) {
+        return Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                height: 150,
+                width: 150,
+                color: Colors.amber,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.product.name,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 24),
+                      ),
+                      Text(widget.product.price.toStringAsFixed(2)),
+                      Stack(
+                        children: stackChildren,
+                      )
+                    ]),
+              ),
+            ]);
+      },
+    ));
   }
 }
