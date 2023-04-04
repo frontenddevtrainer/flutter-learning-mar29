@@ -17,7 +17,11 @@ class EduAppBar extends StatelessWidget with PreferredSizeWidget {
               Navigator.pushNamed(context, "/cart");
             },
             icon: const Icon(Icons.shopping_bag_sharp)),
-        IconButton(onPressed: () {}, icon: const Icon(Icons.person))
+        IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, "/checkout");
+            },
+            icon: const Icon(Icons.person))
       ],
       leading: Builder(
         builder: (context) {
