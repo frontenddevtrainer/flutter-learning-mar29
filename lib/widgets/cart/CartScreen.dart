@@ -18,9 +18,27 @@ class CartScreen extends StatelessWidget {
               final cartItem = value.getCartItems();
               final product = cartItem[index];
 
-              return ListTile(
-                title: Text(product.name),
-              );
+              return Dismissible(
+                  background: Container(color: Colors.green),
+                  secondaryBackground: Container(
+                    color: Colors.red,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: const [
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Icon(Icons.delete),
+                        )
+                      ],
+                    ),
+                  ),
+                  onDismissed: (direction) {
+                    value.removeFromCart(product);
+                  },
+                  key: Key(index.toString()),
+                  child: ListTile(
+                    title: Text(product.name),
+                  ));
             },
           ),
         );
