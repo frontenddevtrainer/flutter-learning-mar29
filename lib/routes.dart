@@ -1,6 +1,6 @@
 import "package:edu_ecommerce/widgets/employee/EmployeeScreen.dart";
 import 'package:flutter/material.dart';
-import "widgets/CartScreen.dart";
+import "widgets/cart/CartScreen.dart";
 import "widgets/HomeScreen.dart";
 
 final Map<String, WidgetBuilder> routes = {

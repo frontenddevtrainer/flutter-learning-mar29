@@ -6,12 +6,16 @@ class CartVM with ChangeNotifier {
   Cart cart = Cart();
 
   addToCart({name, id, quantity}) {
-    cart.items.add(CartItem(name: name, id: id, quantity: quantity));
+    cart.items.add(CartItem(name: name, id: id));
     print(cart);
     notifyListeners();
   }
 
   removeFromCart(item) {
     cart.items.remove(item);
+  }
+
+  getCartItems(){
+    return cart.items;
   }
 }

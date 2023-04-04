@@ -22,7 +22,7 @@ class _ProductListItemState extends State<ProductListItem> {
     });
 
     Provider.of<CartVM>(context, listen: false).addToCart(
-        id: widget.product.id, name: widget.product.name, quantity: counter);
+        id: widget.product.id, name: widget.product.name);
   }
 
   @override
